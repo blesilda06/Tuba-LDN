@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to Municipality of Tuba</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            background-image: url('Municipal-Hall.2.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    
+        header {
+            color: white;
+            padding: 10px;
+            text-align: center;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+
+        }
+    
+        h1, h2 {
+            margin: 2px;
+            text-align: center;
+        }
+    
+        #login {
+            padding: 10px;
+            margin: 30px auto;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+            max-width: 240px;
+            color: beige;
+        }
+    
+        .input-group {
+            margin-bottom: 8px;
+        }
+    
+        .input-group label {
+            display: block;
+            margin-bottom: 2px;
+            color:beige;
+            font-size: 13px;
+        }
+    
+        .input-group input {
+            width: 100%;
+            padding: 6px;
+            font-size: 12px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            transition: border-color 0.3s;
+        }
+    
+        .input-group input:focus {
+            border-color: #4399f6;
+            outline: none;
+        }
+    
+        .error-message {
+            color: red;
+            font-size: 0.75em;
+            display: none;
+        }
+    
+        button {
+            width: 100%;
+            padding: 6px;
+            font-size: 13px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+    
+        button:hover {
+            background: #0056b3;
+        }
+    
+        footer {
+            text-align: center;
+            padding: 8px;
+            color: white;
+            font-size: 16px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            text-shadow: 1px 1px 2px black;
+        }
+    
+        img {
+            display: block;
+            margin: 0 auto 10px auto;
+            max-width: 60px;
+            height: auto;
+            border-radius: 50%;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    
+    
+    
+</head>
+<body>
+    <header>
+        <h1>Welcome to Municipality of Tuba</h1><h4>"with its stunning landscapes, lush pine forests, and cool climate, perfect for outdoor adventures like hiking and exploring waterfalls"</h4></h1>
+        <b><p>Please log in to access community services.</p></b>
+    </header><br>
+
+    <section id="login" style="max-width: 400px; margin: 0 auto; padding: 20px; background:fixed; border-radius: 8px; box-shadow: 0 4px 8px rgba(10, 9, 9, 0.1);">
+        <img src="tuba logo.png" alt="logo" style="display: block; margin: 0 auto 20px; max-width: 100px;">
+        <h2 style="text-align: center; margin-bottom: 20px;">Login</h2>
+    
+        <form id="loginForm" method="post" style="display: flex; flex-direction: column; gap: 15px;">
+
+            <div class="input-group">
+                <label for="username" style="font-weight: bold;">Username:</label>
+                <input type="text" id="username" name="username" required 
+                       style="padding: 10px; font-size: 16px; border-radius: 5px; border: 1px solid #ccc; width: 95%;">
+    
+                <span class="error-message" id="usernameError" style="color: red;"></span>
+            </div>
+    
+            
+            <div class="input-group" style="position: relative;">
+                <label for="password" style="font-weight: bold;">Password:</label>
+                <input type="password" id="password" name="password" required 
+                       style="padding: 10px; font-size: 16px; border-radius: 5px; border: 1px solid #ccc; width: 95%;">
+
+                       <span class="error-message" id="passwordError" style="color: red;"></span>
+    
+                
+                <span onclick="togglePasswordVisibility()" id="toggleIcon" 
+                      style="position: absolute; right: 10px; top: 50%; transform: translateY(-10%); cursor: pointer;">👁️</span>
+    
+            </div>
+    
+            <button type="submit" style="padding: 12px; background-color: #3a8deb; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">Login</button>
+        </form>
+    </section>
+    <br>
+
+    <footer>
+        <b><p>&copy; Municipality of Tuba. All rights reserved.</p></b>
+    </footer>
+
+    <script>
+        const adminCredentials = {
+            username: 'admin@gmail.com.ph',
+            password: 'padayao123'
+        };
+    
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+    
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+    
+            const usernameError = document.getElementById('usernameError');
+            const passwordError = document.getElementById('passwordError');
+    
+            usernameError.textContent = '';
+            usernameError.style.display = 'none';
+            passwordError.textContent = '';
+            passwordError.style.display = 'none';
+    
+            if (username === adminCredentials.username && password === adminCredentials.password) {
+                window.location.href = 'padayao.html'; 
+            } else {
+                usernameError.textContent = 'Invalid username or password. Please try again.';
+                usernameError.style.display = 'block';
+            }
+        });
+    
+            function togglePasswordVisibility() {
+                 const passwordInput = document.getElementById('password');
+                const toggleIcon = document.getElementById('toggleIcon');
+        
+       
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.textContent = '🙈'; 
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.textContent = '👁️';
+            }
+        }
+    </script>
+</body>
+</html>
